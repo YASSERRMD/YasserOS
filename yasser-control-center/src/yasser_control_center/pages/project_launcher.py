@@ -42,6 +42,7 @@ def open_in_terminal(path: Path, terminal: str = "xfce4-terminal") -> bool:
     """Open *path* in the given *terminal* emulator.
 
     Returns True if the process was launched, False on any error.
+    The terminal starts with its working directory set to *path*.
     """
     try:
         subprocess.Popen([terminal, f"--working-directory={path}"])
