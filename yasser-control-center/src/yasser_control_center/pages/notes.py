@@ -49,7 +49,10 @@ def read_note(path: Path) -> str:
 
 
 def save_note(path: Path, content: str) -> None:
-    """Save *content* to *path*, overwriting the existing note."""
+    """Save *content* to *path*, overwriting the existing note.
+
+    Always writes UTF-8. The file is created if it does not yet exist.
+    """
     path.write_text(content, encoding="utf-8")
 
 
