@@ -1,0 +1,11 @@
+{
+  "homepage": "file:///usr/share/yasseros/docs/index.html",
+  "homepage_is_newtabpage": false,
+  "browser": {
+    "show_home_button": true
+  },
+  "session": {
+    "restore_on_startup": 4,
+    "startup_urls": ["file:///usr/share/yasseros/docs/index.html"]
+  }
+}
