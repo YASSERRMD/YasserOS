@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=YasserOS Documentation
+GenericName=Documentation Browser
+Comment=Browse local YasserOS documentation
+Icon=help-contents
+Exec=xdg-open /usr/share/yasseros/docs/index.html
+Terminal=false
+StartupNotify=false
+Categories=Documentation;YasserOS;
+Keywords=yasseros;docs;documentation;help;
