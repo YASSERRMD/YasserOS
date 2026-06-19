@@ -25,13 +25,17 @@ done
 if command -v desktop-file-validate >/dev/null 2>&1; then
     log "Validating desktop entries..."
     find "${STAGE_DIR}/files/usr/share/applications" -name "*.desktop" 2>/dev/null | while read -r f; do
-        desktop-file-validate "$f" && log "  OK: $(basename "$f")" || log "  WARN: $(basename "$f") validation failed"
+        if desktop-file-validate "$f"; then
+            log "  OK: $(basename "$f")"
+        else
+            log "  WARN: $(basename "$f") validation failed"
+        fi
     done
 fi
 
 # Log wallpaper presence
-if ls "${STAGE_DIR}/files/usr/share/yasseros/wallpapers/"*.png 2>/dev/null | head -1 | grep -q .; then
-    WALLPAPER_COUNT=$(ls "${STAGE_DIR}/files/usr/share/yasseros/wallpapers/"*.png 2>/dev/null | wc -l)
+WALLPAPER_COUNT=$(find "${STAGE_DIR}/files/usr/share/yasseros/wallpapers/" -name "*.png" 2>/dev/null | wc -l)
+if [ "$WALLPAPER_COUNT" -gt 0 ]; then
     log "Found ${WALLPAPER_COUNT} wallpaper(s)"
 else
     log "No custom wallpapers found — using default"
