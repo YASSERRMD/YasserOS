@@ -1,0 +1,23 @@
+#!/bin/sh
+# Enable VirtualBox dynamic display resolution via VBoxClient autostart.
+set -e
+
+# Create VBoxClient autostart entry for all users
+mkdir -p /etc/xdg/autostart
+
+cat > /etc/xdg/autostart/vboxclient.desktop << 'EOF'
+[Desktop Entry]
+Type=Application
+Name=VirtualBox Client
+Exec=/usr/bin/VBoxClient-all
+Terminal=false
+Hidden=false
+X-GNOME-Autostart-enabled=true
+EOF
+
+# Enable vboxservice systemd unit
+if command -v systemctl >/dev/null 2>&1; then
+    systemctl enable vboxservice || true
+fi
+
+echo "VirtualBox dynamic resolution configured."
