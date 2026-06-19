@@ -47,3 +47,13 @@ def test_discover_projects_finds_dirs(tmp_path):
     assert "alpha" in names
     assert "beta" in names
     assert "gamma" in names
+
+
+def test_is_git_repo_false():
+    """/tmp should not be a git repo."""
+    assert is_git_repo(Path("/tmp")) is False
+
+
+def test_terminal_launch_bad_path():
+    """A non-existent terminal binary should return False."""
+    assert open_in_terminal(Path("/tmp"), "this_cmd_does_not_exist") is False
