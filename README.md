@@ -156,3 +156,13 @@ A: pi-gen builds on Debian, giving access to ~60,000 apt packages. See [ADR-001]
 
 **Q: Does this run on Raspberry Pi 5?**  
 A: Should work on Pi 5 (same ARM64 architecture), but primary testing is on Pi 4.
+
+## Known Limitations
+
+- **Build time:** 20–60 minutes per image on a modern PC
+- **ARM only (Phase 1–20):** pi-gen produces ARM images only; amd64 VirtualBox track is for development testing
+- **No automated testing:** Image validation is manual (Phase 7 checklists)
+- **No OTA updates:** Updating YasserOS requires reflashing the SD card
+- **Single user:** Only the `yasser` user account is configured by default
+- **English only:** Locale is en_GB.UTF-8; no i18n work planned
+- **Not hardened:** Default Raspberry Pi OS security posture (no firewall, SSH off by default)
