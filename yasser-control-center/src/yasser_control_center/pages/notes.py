@@ -74,7 +74,11 @@ def delete_note(path: Path) -> bool:
 
 
 def get_markdown_template() -> str:
-    """Return a basic Markdown template string for new notes."""
+    """Return a basic Markdown template string for new notes.
+
+    The template includes a level-1 heading and the creation date so the note
+    is immediately identifiable in an external Markdown editor.
+    """
     today = datetime.now().strftime("%Y-%m-%d")
     return f"# Note\n\n_Created: {today}_\n\n---\n\nWrite your note here.\n"
 
