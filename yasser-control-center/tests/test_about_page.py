@@ -2,17 +2,26 @@
 
 import sys
 import os
+import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
-from yasser_control_center.pages.about import _read_os_release
+try:
+    from yasser_control_center.pages.about import _read_os_release
+    HAS_GI = True
+except ImportError:
+    HAS_GI = False
+
+pytestmark = pytest.mark.skipif(not HAS_GI, reason="PyGObject (gi) not installed")
 
 
+@pytest.mark.skipif(not HAS_GI, reason="PyGObject (gi) not installed")
 def test_read_os_release_returns_dict():
     result = _read_os_release()
     assert isinstance(result, dict)
 
 
+@pytest.mark.skipif(not HAS_GI, reason="PyGObject (gi) not installed")
 def test_read_os_release_missing_file(tmp_path, monkeypatch):
     monkeypatch.setattr(
         "builtins.open",
