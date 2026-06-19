@@ -34,7 +34,10 @@ def discover_projects(root: Path) -> list[Path]:
 
 
 def is_git_repo(path: Path) -> bool:
-    """Return True if *path* contains a .git directory or file."""
+    """Return True if *path* contains a .git directory or file.
+
+    Works for both regular clones (.git directory) and git worktrees (.git file).
+    """
     return (path / ".git").exists()
 
 
