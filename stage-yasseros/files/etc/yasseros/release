@@ -1,0 +1,6 @@
+YASSEROS_NAME="YasserOS"
+YASSEROS_VERSION="v0.0.1-alpha"
+YASSEROS_CODENAME="Awal"
+YASSEROS_ARCH="arm64"
+YASSEROS_BASE="Raspberry Pi OS bookworm"
+YASSEROS_HOME="https://github.com/YASSERRMD/YasserOS"

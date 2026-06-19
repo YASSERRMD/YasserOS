@@ -1,0 +1,10 @@
+NAME="YasserOS"
+VERSION="v0.0.1-alpha"
+VERSION_ID="0.0.1"
+ID=yasseros
+ID_LIKE=raspbian debian
+PRETTY_NAME="YasserOS v0.0.1-alpha (bookworm)"
+HOME_URL="https://github.com/YASSERRMD/YasserOS"
+SUPPORT_URL="https://github.com/YASSERRMD/YasserOS/issues"
+BUG_REPORT_URL="https://github.com/YASSERRMD/YasserOS/issues"
+VERSION_CODENAME=bookworm
