@@ -68,3 +68,24 @@ See [ADR-001](docs/adr/ADR-001-build-system-choice.md) for the build system deci
 - Required packages: `debootstrap qemu-user-static parted dosfstools`
 
 See [docs/build-host-requirements.md](docs/build-host-requirements.md) for full requirements.
+
+## Quick Start
+
+```bash
+# 1. Clone with submodules
+git clone --recurse-submodules https://github.com/YASSERRMD/YasserOS.git
+cd YasserOS
+
+# 2. Check your build environment
+./scripts/check-build-env.sh
+
+# 3. Build YasserOS image
+./scripts/build-yasseros.sh
+
+# 4. Flash to SD card (replace /dev/sdX with your card)
+xz -dc deploy/YasserOS-*.img.xz | sudo dd of=/dev/sdX bs=4M status=progress
+
+# 5. Boot on Raspberry Pi 4 and enjoy
+```
+
+> **Note:** The build scripts are added in Phase 5. If scripts are missing, see [pi-gen's own README](pi-gen/README.md) for manual build instructions.
