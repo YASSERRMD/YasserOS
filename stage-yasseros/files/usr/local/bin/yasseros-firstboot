@@ -1,0 +1,45 @@
+#!/bin/bash
+# YasserOS first-boot setup script
+# Runs once on the very first boot, then disables itself.
+set -e
+
+LOG=/var/log/yasseros-firstboot.log
+exec > >(tee -a "$LOG") 2>&1
+
+echo "[$(date)] YasserOS first-boot: starting"
+
+# Apply security baseline
+if [ -x /usr/local/bin/yos-security-baseline ]; then
+    echo "Applying security baseline..."
+    /usr/local/bin/yos-security-baseline || echo "Security baseline failed — continuing"
+fi
+
+# Ensure /home/yasser directory structure
+if id yasser >/dev/null 2>&1; then
+    for dir in Desktop Documents Downloads Pictures Projects; do
+        install -d -o yasser -g yasser "/home/yasser/$dir"
+    done
+    echo "User directories created."
+fi
+
+# Set up yasseros-release file
+cat > /etc/yasseros-release << 'EOF'
+YasserOS v0.1.0-alpha
+Your personal Raspberry Pi OS
+https://github.com/YASSERRMD/YasserOS
+EOF
+
+# Update icon cache
+if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -f -t /usr/share/icons/hicolor 2>/dev/null || true
+fi
+
+# Update desktop database
+if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database /usr/share/applications 2>/dev/null || true
+fi
+
+# Disable this service so it doesn't run again
+systemctl disable yasseros-firstboot.service 2>/dev/null || true
+
+echo "[$(date)] YasserOS first-boot: complete"
