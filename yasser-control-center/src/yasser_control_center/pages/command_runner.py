@@ -82,7 +82,8 @@ def run_safe_command(cmd: str) -> tuple[bool, str]:
         )
         output = result.stdout or result.stderr or "(no output)"
         success = result.returncode == 0
-        # Error handling: log the result regardless of success
+        # Error handling: log the result regardless of success.
+        # Non-zero exit codes are surfaced in the output view.
         log_command(cmd, output, error=not success)
         return (success, output)
     except subprocess.TimeoutExpired:
