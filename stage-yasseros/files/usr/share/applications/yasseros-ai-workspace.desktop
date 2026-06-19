@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=AI Workspace
+GenericName=AI Tools Launcher
+Comment=Access YasserOS AI tools and workspace
+Icon=starred
+Exec=ycc --page ai_workspace
+Terminal=false
+StartupNotify=true
+Categories=Development;Utility;YasserOS;
+Keywords=yasseros;ai;workspace;llm;tools;
