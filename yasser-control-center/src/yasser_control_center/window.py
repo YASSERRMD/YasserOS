@@ -10,6 +10,7 @@ from .pages.about import AboutPage
 from .pages.system_info import SystemInfoPage
 from .pages.lab_mode import LabModePage
 from .pages.ai_workspace import AIWorkspacePage
+from .pages.project_launcher import ProjectLauncherPage
 
 
 class ControlCenterWindow(Adw.ApplicationWindow):
@@ -53,6 +54,7 @@ class ControlCenterWindow(Adw.ApplicationWindow):
             ("system", "System Info", "computer-symbolic"),
             ("lab", "Lab Mode", "applications-science-symbolic"),
             ("ai_workspace", "AI Workspace", "starred-symbolic"),
+            ("projects", "Projects", "folder-symbolic"),
         ]:
             row = self._make_nav_row(label, icon)
             sidebar_list.append(row)
@@ -82,6 +84,10 @@ class ControlCenterWindow(Adw.ApplicationWindow):
         ai_workspace_page = AIWorkspacePage()
         self._content_stack.add_named(ai_workspace_page, "ai_workspace")
         self._pages["ai_workspace"] = "ai_workspace"
+
+        projects_page = ProjectLauncherPage()
+        self._content_stack.add_named(projects_page, "projects")
+        self._pages["projects"] = "projects"
 
         self._content_page.set_child(self._content_stack)
         self._split_view.set_content(self._content_page)
