@@ -35,5 +35,4 @@
   <property name="misc-rewrap-on-resize" type="bool" value="true"/>
   <property name="misc-bell" type="bool" value="false"/>
   <property name="misc-slim-tabs" type="bool" value="true"/>
-  <property name="padding" type="uint" value="2"/>
 </channel>
