@@ -188,7 +188,10 @@ try:
             self._set_output(output)
 
         def _open_terminal(self):
-            """Terminal fallback — open xfce4-terminal for unrestricted commands."""
+            """Terminal fallback — open xfce4-terminal for unrestricted commands.
+
+            This lets users run commands that are not in the safe whitelist.
+            """
             try:
                 subprocess.Popen(["xfce4-terminal"])
             except FileNotFoundError:
