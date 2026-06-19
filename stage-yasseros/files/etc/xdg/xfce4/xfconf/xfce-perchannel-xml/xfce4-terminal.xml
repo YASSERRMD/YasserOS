@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <channel name="xfce4-terminal" version="1.0">
+  <!-- YasserOS palette: Deep Space bg, Snow fg -->
   <property name="background-color" type="string" value="#0D1117"/>
   <property name="foreground-color" type="string" value="#E6EDF3"/>
-  <property name="tab-bar-at-bottom" type="bool" value="true"/>
+
+  <!-- Full 16-color palette tuned for Dark GitHub-style -->
+  <property name="color-palette" type="string" value="#21262D;#FF7B72;#3FB950;#D29922;#4493F8;#A371F7;#39C5CF;#B1BAC4;#484F58;#FFA198;#56D364;#E3B341;#79C0FF;#D2A8FF;#56D4DD;#E6EDF3"/>
+
+  <!-- Typography -->
   <property name="font-name" type="string" value="JetBrains Mono 11"/>
+  <property name="font-use-system" type="bool" value="false"/>
+
+  <!-- Scrollback -->
   <property name="scrolling-lines" type="uint" value="10000"/>
   <property name="scrolling-on-output" type="bool" value="false"/>
+  <property name="scrolling-on-keystroke" type="bool" value="true"/>
+  <property name="scrollbar-visible" type="bool" value="false"/>
+
+  <!-- Cursor -->
+  <property name="cursor-blinks" type="bool" value="false"/>
+  <property name="cursor-shape" type="uint" value="0"/>
+
+  <!-- Tabs -->
+  <property name="tab-bar-at-bottom" type="bool" value="true"/>
+  <property name="misc-tab-close-buttons" type="bool" value="true"/>
+  <property name="misc-tab-close-middle-click" type="bool" value="true"/>
+
+  <!-- Title -->
   <property name="title-mode" type="uint" value="0"/>
+  <property name="title-initial" type="string" value="Terminal"/>
+
+  <!-- Misc -->
+  <property name="misc-copy-on-select" type="bool" value="false"/>
+  <property name="misc-rewrap-on-resize" type="bool" value="true"/>
+  <property name="misc-bell" type="bool" value="false"/>
+  <property name="misc-slim-tabs" type="bool" value="true"/>
+  <property name="padding" type="uint" value="2"/>
 </channel>
