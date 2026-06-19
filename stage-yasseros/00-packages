@@ -54,3 +54,5 @@ python3-venv
 python3-pip
 # Terminal editors
 nano
+# micro editor (note: may not be in standard Debian repos, install manually if needed)
+# micro
