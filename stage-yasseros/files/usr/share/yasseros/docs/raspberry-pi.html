@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raspberry Pi Setup – YasserOS</title>
+  <style>
+    :root{--bg:#0D1117;--surface:#161B22;--border:#30363D;--blue:#4493F8;--violet:#A371F7;--snow:#E6EDF3;--muted:#8B949E;--green:#3FB950;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--snow);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+    a{color:var(--blue);text-decoration:none;}a:hover{text-decoration:underline;}
+    header{background:var(--surface);border-bottom:1px solid var(--border);padding:1rem 2rem;}
+    header a{color:var(--muted);font-size:0.9rem;}header h1{font-size:1.4rem;margin-top:0.25rem;}
+    main{max-width:800px;margin:0 auto;padding:2rem;}
+    h2{color:var(--blue);margin:2rem 0 0.75rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+    table{width:100%;border-collapse:collapse;margin:0.75rem 0;}
+    th{background:var(--surface);color:var(--muted);text-align:left;padding:0.5rem 0.75rem;font-size:0.85rem;}
+    td{padding:0.5rem 0.75rem;border-bottom:1px solid var(--border);font-size:0.9rem;}
+    .ok{color:var(--green);}
+    pre{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1rem;overflow-x:auto;font-size:0.875rem;margin:0.75rem 0;}
+    footer{text-align:center;padding:2rem;color:var(--muted);font-size:0.8rem;border-top:1px solid var(--border);margin-top:3rem;}
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">&larr; Documentation</a>
+    <h1>Raspberry Pi Setup</h1>
+  </header>
+  <main>
+    <h2>Supported Hardware</h2>
+    <table>
+      <tr><th>Model</th><th>Architecture</th><th>Status</th></tr>
+      <tr><td>Raspberry Pi 4 Model B</td><td>arm64 / aarch64</td><td class="ok">Supported</td></tr>
+      <tr><td>Raspberry Pi 5</td><td>arm64 / aarch64</td><td class="ok">Supported</td></tr>
+      <tr><td>Raspberry Pi 3B+</td><td>armv7 / arm64</td><td>Community tested</td></tr>
+      <tr><td>Raspberry Pi Zero 2 W</td><td>arm64</td><td>Limited RAM — may be slow</td></tr>
+    </table>
+
+    <h2>Minimum Requirements</h2>
+    <ul style="padding-left:1.5rem;margin:0.75rem 0;">
+      <li>2 GB RAM (4 GB recommended)</li>
+      <li>16 GB SD card (32 GB recommended for Lab Mode)</li>
+      <li>Raspberry Pi 4 or later for best experience</li>
+    </ul>
+
+    <h2>Flashing</h2>
+    <p>Use Raspberry Pi Imager (recommended) or flash manually:</p>
+    <pre>xzcat yasseros-arm64.img.xz | sudo dd of=/dev/mmcblk0 bs=4M status=progress conv=fsync
+sudo sync</pre>
+
+    <h2>Verifying with Pi Checker</h2>
+    <p>After booting, open <strong>Yasser Control Center → Pi Checker</strong> to confirm:</p>
+    <ul style="padding-left:1.5rem;margin:0.75rem 0;">
+      <li>ARM64 architecture detected</li>
+      <li>Raspberry Pi model identified</li>
+      <li>All required packages installed</li>
+    </ul>
+  </main>
+  <footer>YasserOS &mdash; <a href="index.html">Documentation Home</a></footer>
+</body>
+</html>
