@@ -139,3 +139,20 @@ Custom assets (wallpapers, logos) in `assets/` are original work by YASSERRMD â€
 | Boot Splash | Desktop | Yasser Control Center |
 |------------|---------|----------------------|
 | *(coming soon)* | *(coming soon)* | *(coming soon)* |
+
+## FAQ
+
+**Q: Is this actually usable?**  
+A: After Phase 20, yes â€” on a Raspberry Pi 4. It's a real Linux OS, just a personal one.
+
+**Q: Can I use this?**  
+A: Technically yes (BSD 3-Clause license), but it's not designed for general use. You'd be better off with standard Raspberry Pi OS.
+
+**Q: Why not just use Raspberry Pi OS?**  
+A: Because building your own OS is how you deeply understand how it works.
+
+**Q: Why pi-gen and not Yocto/Buildroot?**  
+A: pi-gen builds on Debian, giving access to ~60,000 apt packages. See [ADR-001](docs/adr/ADR-001-build-system-choice.md).
+
+**Q: Does this run on Raspberry Pi 5?**  
+A: Should work on Pi 5 (same ARM64 architecture), but primary testing is on Pi 4.
