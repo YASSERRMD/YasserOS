@@ -37,7 +37,11 @@ def is_command_allowed(cmd: str) -> bool:
 
 
 def get_log_path() -> Path:
-    """Return the path to the command log file."""
+    """Return the path to the command log file.
+
+    Log lives at ~/.cache/ycc/commands.log and records every command run
+    through the Command Runner together with its output and timestamp.
+    """
     return Path.home() / ".cache/ycc/commands.log"
 
 
