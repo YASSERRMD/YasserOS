@@ -8,6 +8,7 @@ xfce4-screensaver
 xfce4-power-manager
 xfce4-notifyd
 xfce4-settings
+xfce4-whiskermenu-plugin
 # File manager
 thunar
 thunar-archive-plugin
@@ -16,9 +17,11 @@ thunar-volman
 lightdm
 lightdm-gtk-greeter
 lightdm-gtk-greeter-settings
-# System tray
+# System tray and panel plugins
 xfce4-statusnotifier-plugin
 xfce4-datetime-plugin
+xfce4-clipman-plugin
+xfce4-battery-plugin
 # Network
 network-manager
 network-manager-gnome

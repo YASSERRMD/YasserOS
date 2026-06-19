@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel name="xfce4-terminal" version="1.0">
+  <property name="background-color" type="string" value="#0D1117"/>
+  <property name="foreground-color" type="string" value="#E6EDF3"/>
+  <property name="tab-bar-at-bottom" type="bool" value="true"/>
+  <property name="font-name" type="string" value="JetBrains Mono 11"/>
+  <property name="scrolling-lines" type="uint" value="10000"/>
+  <property name="scrolling-on-output" type="bool" value="false"/>
+  <property name="title-mode" type="uint" value="0"/>
+</channel>
