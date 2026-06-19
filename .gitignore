@@ -1,0 +1,42 @@
+# pi-gen build artifacts
+work/
+deploy/
+*.img
+*.img.xz
+*.img.xz.sha256
+
+# debian-live-build artifacts
+debian-live-amd64/.build/
+debian-live-amd64/binary/
+debian-live-amd64/cache/
+debian-live-amd64/chroot/
+debian-live-amd64/live-image-*.iso
+debian-live-amd64/live-image-*.contents
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.mypy_cache/
+.ruff_cache/
+
+# Editor
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets — never commit these
+*.env
+.env
+secrets/
+credentials.json
