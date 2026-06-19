@@ -182,3 +182,4 @@ def get_cpu_count() -> int:
         return 0
 # Section: control-center: add CPU architecture display
 # Section: control-center: add ARM64 readiness status
+# Section: control-center: add package compatibility checklist
