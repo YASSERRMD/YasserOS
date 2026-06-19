@@ -23,6 +23,7 @@ def discover_projects(root: Path) -> list[Path]:
     """Return a sorted list of subdirectories under *root* (max 50).
 
     Only immediate children are returned; non-existent roots yield an empty list.
+    Hidden directories (starting with '.') are excluded.
     """
     if not root.exists() or not root.is_dir():
         return []
