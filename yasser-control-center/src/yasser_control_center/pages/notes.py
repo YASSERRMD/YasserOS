@@ -60,7 +60,11 @@ def save_note(path: Path, content: str) -> None:
 
 
 def delete_note(path: Path) -> bool:
-    """Delete a note file. Returns True on success, False if the file did not exist."""
+    """Delete a note file.
+
+    Returns True on success, False if the file did not exist.
+    Other OS errors are not caught and will propagate to the caller.
+    """
     try:
         path.unlink()
         return True
