@@ -54,3 +54,17 @@ YasserOS Repository
 **Desktop:** XFCE 4.x + LightDM  
 
 See [ADR-001](docs/adr/ADR-001-build-system-choice.md) for the build system decision rationale.
+
+## Build Prerequisites
+
+**Recommended: Docker (any OS)**
+- Docker Engine 20.10+
+- 4+ CPU cores, 8 GB RAM, 50 GB free disk
+- Internet access (for apt package downloads)
+
+**Alternative: Native Debian/Ubuntu host**
+- Debian 12 or Ubuntu 22.04/24.04
+- `sudo` access
+- Required packages: `debootstrap qemu-user-static parted dosfstools`
+
+See [docs/build-host-requirements.md](docs/build-host-requirements.md) for full requirements.
