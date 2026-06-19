@@ -6,6 +6,7 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 
 from gi.repository import Adw, Gtk
+from .pages.about import AboutPage
 
 
 class ControlCenterWindow(Adw.ApplicationWindow):
@@ -43,6 +44,7 @@ class ControlCenterWindow(Adw.ApplicationWindow):
         sidebar_list.connect("row-selected", self._on_nav_selected)
 
         self._nav_rows = {}
+        self._pages = {}
         for page_id, label, icon in [
             ("about", "About YasserOS", "help-about-symbolic"),
             ("system", "System Info", "computer-symbolic"),
@@ -55,13 +57,23 @@ class ControlCenterWindow(Adw.ApplicationWindow):
         sidebar_page.set_child(sidebar_box)
         self._split_view.set_sidebar(sidebar_page)
 
-        # Content placeholder
-        self._content_page = Adw.NavigationPage(title="Welcome")
-        status = Adw.StatusPage()
-        status.set_icon_name("applications-system-symbolic")
-        status.set_title("Yasser Control Center")
-        status.set_description("Select a section from the sidebar.")
-        self._content_page.set_child(status)
+        # Content area — stack of pages
+        self._content_page = Adw.NavigationPage(title="About YasserOS")
+        self._content_stack = Gtk.Stack()
+        self._content_stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
+
+        about_page = AboutPage()
+        self._content_stack.add_named(about_page, "about")
+        self._pages["about"] = "about"
+
+        placeholder = Adw.StatusPage()
+        placeholder.set_icon_name("computer-symbolic")
+        placeholder.set_title("System Info")
+        placeholder.set_description("Coming in Phase 19.")
+        self._content_stack.add_named(placeholder, "system")
+        self._pages["system"] = "system"
+
+        self._content_page.set_child(self._content_stack)
         self._split_view.set_content(self._content_page)
 
         # Select first item by default
@@ -78,6 +90,9 @@ class ControlCenterWindow(Adw.ApplicationWindow):
     def _on_nav_selected(self, listbox, row):
         if row is None:
             return
-        # Map row to page — resolved in Phase 18/19 when pages are built
-        # For now, update the content page title to reflect selection
-        self._content_page.set_title(row.get_title())
+        # Find the page_id for the selected row
+        for page_id, nav_row in self._nav_rows.items():
+            if nav_row is row:
+                self._content_stack.set_visible_child_name(page_id)
+                self._content_page.set_title(row.get_title())
+                break
