@@ -27,6 +27,7 @@ def create_note(name: str, content: str = "") -> Path:
 
     The file is created inside the notes directory. If *content* is empty,
     the markdown template is used as the initial content.
+    Spaces in *name* are replaced with hyphens for a URL-safe filename.
     """
     notes_dir = get_notes_dir()
     notes_dir.mkdir(parents=True, exist_ok=True)
