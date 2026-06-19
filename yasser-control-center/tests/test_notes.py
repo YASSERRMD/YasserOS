@@ -51,3 +51,15 @@ def test_save_note(tmp_path):
     note_path.write_text("original", encoding="utf-8")
     save_note(note_path, "updated content")
     assert note_path.read_text(encoding="utf-8") == "updated content"
+
+
+def test_delete_note(tmp_path):
+    """delete_note should remove the file and return True."""
+    from yasser_control_center.pages.notes import delete_note
+
+    note_path = tmp_path / "to-delete.md"
+    note_path.write_text("content", encoding="utf-8")
+    assert note_path.exists()
+    result = delete_note(note_path)
+    assert result is True
+    assert not note_path.exists()
