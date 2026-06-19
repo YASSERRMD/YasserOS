@@ -113,3 +113,13 @@ See [docs/raspberry-pi-roadmap.md](docs/raspberry-pi-roadmap.md) for the full ro
 - [Raspberry Pi OS](https://www.raspberrypi.com/software/) — the upstream OS
 - [Debian](https://www.debian.org/) — the foundation everything is built on
 - [XFCE](https://www.xfce.org/) — the chosen desktop environment
+
+## Upstream Attribution
+
+This project is a downstream customisation of **Raspberry Pi OS**, built using **pi-gen** by the Raspberry Pi Foundation.
+
+- Upstream pi-gen repository: https://github.com/RPi-Distro/pi-gen
+- pi-gen license: BSD 3-Clause (see [pi-gen/LICENSE](pi-gen/LICENSE))
+- Raspberry Pi OS copyright: Raspberry Pi (Trading) Ltd.
+
+YasserOS complies with the pi-gen BSD 3-Clause license terms. The Raspberry Pi name and logo are trademarks of Raspberry Pi Ltd. YasserOS is not endorsed by or affiliated with Raspberry Pi Ltd.
