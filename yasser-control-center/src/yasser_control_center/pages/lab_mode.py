@@ -143,14 +143,16 @@ class LabModePage(Gtk.Box):
 
     def _open_projects_folder(self):
         projects_dir = self._config.get("projects_dir", str(_PROJECTS_DIR))
-        Path(projects_dir).mkdir(parents=True, exist_ok=True)
-        try:
-            subprocess.Popen(["xdg-open", projects_dir])
-        except FileNotFoundError:
+        path = Path(projects_dir)
+        path.mkdir(parents=True, exist_ok=True)
+        for cmd in [["xdg-open", str(path)], ["thunar", str(path)], ["nautilus", str(path)]]:
             try:
-                subprocess.Popen(["thunar", projects_dir])
+                subprocess.Popen(cmd)
+                self._status_widget.set_ok(f"Opened {path.name}/")
+                return
             except FileNotFoundError:
-                self._status_widget.set_status("No file manager found", "dialog-error-symbolic")
+                continue
+        self._status_widget.set_error("No file manager found")
 
     def _open_documentation(self):
         docs_dir = self._config.get("docs_dir", str(_DOCS_DIR))
