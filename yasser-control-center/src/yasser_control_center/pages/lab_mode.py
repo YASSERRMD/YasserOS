@@ -33,19 +33,29 @@ def _load_lab_config() -> dict:
 
 
 class _StatusWidget(Gtk.Box):
-    def __init__(self):
+    """Reusable status indicator showing an icon + text."""
+
+    def __init__(self, text: str = "Active", css_class: str = "success"):
         super().__init__(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         self.set_margin_top(4)
         self.set_margin_bottom(4)
         self._icon = Gtk.Image.new_from_icon_name("emblem-default-symbolic")
         self.append(self._icon)
-        self._label = Gtk.Label(label="Lab Mode Active")
-        self._label.add_css_class("success")
+        self._label = Gtk.Label(label=text)
+        self._label.add_css_class(css_class)
         self.append(self._label)
 
-    def set_status(self, text: str, icon: str = "emblem-default-symbolic"):
+    def set_status(self, text: str, icon: str = "emblem-default-symbolic", css_class: str = ""):
         self._label.set_label(text)
         self._icon.set_from_icon_name(icon)
+        if css_class:
+            self._label.add_css_class(css_class)
+
+    def set_ok(self, text: str = "OK"):
+        self.set_status(text, "emblem-default-symbolic", "success")
+
+    def set_error(self, text: str = "Error"):
+        self.set_status(text, "dialog-error-symbolic", "error")
 
 
 class LabModePage(Gtk.Box):
