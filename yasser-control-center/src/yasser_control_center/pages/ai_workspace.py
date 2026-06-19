@@ -144,7 +144,7 @@ try:
             )
             open_webui_group.add(webui_row)
 
-            # Local model folder shortcut — quick access to ~/Models
+            # Local model folder shortcut — quick access to ~/Models (or YASSEROS_MODELS_DIR)
             models_group = Adw.PreferencesGroup()
             models_group.set_title("Local Models")
             content.append(models_group)
