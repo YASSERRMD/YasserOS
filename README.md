@@ -24,15 +24,15 @@ The first 20 phases establish the foundation: understanding pi-gen, building an 
 
 ## Goals
 
-**Phase 1–20 Goals:**
-- [x] Fork and understand pi-gen (the official Raspberry Pi OS builder)
-- [x] Build an unmodified Raspberry Pi OS image from source
-- [ ] Build a branded YasserOS image
-- [ ] Establish a reusable customisation layer (`stage-yasseros`)
-- [ ] Establish CI/CD (GitHub Actions)
-- [ ] Create the skeleton of Yasser Control Center (GTK app)
-
-**Non-Goals (Phase 1–20):** No XFCE theming, no AI workspace, no custom kernel. See [docs/non-goals.md](docs/non-goals.md).
+**v0.1.0-alpha Goals (Phases 1–55):**
+- [x] Fork and understand pi-gen
+- [x] Build a branded YasserOS image with `stage-yasseros`
+- [x] CI/CD via GitHub Actions (pytest + shellcheck + desktop-file-validate)
+- [x] Yasser Control Center — 7-page GTK4/libadwaita app
+- [x] Local documentation portal, browser homepage, terminal branding
+- [x] First-boot systemd service, security baseline, optional tools
+- [x] Build profiles (default/dev/minimal), image validation script
+- [x] 186 automated tests (4 skipped — GTK requires display)
 
 ## Architecture
 
@@ -92,17 +92,16 @@ xz -dc deploy/YasserOS-*.img.xz | sudo dd of=/dev/sdX bs=4M status=progress
 
 ## Roadmap
 
-| Phase Range | Focus                                  | Status         |
-|------------|----------------------------------------|----------------|
-| 1–7         | Foundation: pi-gen understanding, first vanilla build | In Progress |
-| 8–13        | Identity: YasserOS branding, boot, wallpapers | Planned |
-| 14–16       | Desktop: XFCE + VirtualBox support    | Planned        |
-| 17–20       | Control Center skeleton + alpha image  | Planned        |
-| 21–30       | Desktop polish (future)               | Future         |
-| 31–40       | Control Center expansion (future)     | Future         |
-| 41–50       | AI Workspace (future, Pi 5)           | Future         |
-
-See [docs/raspberry-pi-roadmap.md](docs/raspberry-pi-roadmap.md) for the full roadmap.
+| Phase Range | Focus                                           | Status      |
+|------------|--------------------------------------------------|-------------|
+| 1–7        | Foundation: pi-gen, first vanilla build          | ✅ Complete |
+| 8–13       | Identity: branding, boot splash, Plymouth        | ✅ Complete |
+| 14–20      | Desktop + Control Center skeleton                | ✅ Complete |
+| 21–28      | Control Center pages: AI, Projects, Notes, Pi Checker, Menu | ✅ Complete |
+| 29–35      | XFCE panel, terminal, docs portal, browser, tools | ✅ Complete |
+| 36–42      | Performance, security, first-boot, build system, CI | ✅ Complete |
+| 43–49      | Quality, QA, VirtualBox, shared layer, visual polish | ✅ Complete |
+| 50–55      | Alpha release preparation and tagging            | ✅ Complete |
 
 ## Credits
 
