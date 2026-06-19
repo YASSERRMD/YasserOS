@@ -1,0 +1,25 @@
+#!/bin/sh
+# Configure VirtualBox clipboard sharing and shared folders for the live user.
+set -e
+
+LIVE_USER="user"  # debian-live default live user
+
+# Add live user to vboxsf group for shared folder access
+if getent group vboxsf >/dev/null 2>&1; then
+    usermod -aG vboxsf "$LIVE_USER" || true
+fi
+
+# Create a convenience mount point for VirtualBox shared folders
+mkdir -p /media/sf_shared
+chown root:vboxsf /media/sf_shared 2>/dev/null || true
+chmod 770 /media/sf_shared 2>/dev/null || true
+
+# Add fstab entry for auto-mounting the 'shared' VirtualBox shared folder
+if ! grep -q vboxsf /etc/fstab 2>/dev/null; then
+    cat >> /etc/fstab << 'EOF'
+# VirtualBox shared folder (optional — only mounts if 'shared' folder is configured in VM)
+shared  /media/sf_shared  vboxsf  uid=1000,gid=1000,nofail,_netdev  0  0
+EOF
+fi
+
+echo "VirtualBox clipboard and shared folders configured."
