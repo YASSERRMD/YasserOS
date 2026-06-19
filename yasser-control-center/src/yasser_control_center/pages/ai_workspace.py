@@ -104,7 +104,7 @@ try:
             )
             jupyter_group.add(jupyter_status_row)
 
-            # Ollama preferences group
+            # Ollama preferences group — install link shown when not present
             ollama_group = Adw.PreferencesGroup()
             ollama_group.set_title("Ollama")
             content.append(ollama_group)
