@@ -21,3 +21,15 @@ It exists to:
 - **Create** something genuinely useful as a personal daily-driver OS
 
 The first 20 phases establish the foundation: understanding pi-gen, building an unmodified Raspberry Pi OS image, adding a branded customisation layer, and shipping the first bootable YasserOS alpha.
+
+## Goals
+
+**Phase 1–20 Goals:**
+- [x] Fork and understand pi-gen (the official Raspberry Pi OS builder)
+- [x] Build an unmodified Raspberry Pi OS image from source
+- [ ] Build a branded YasserOS image
+- [ ] Establish a reusable customisation layer (`stage-yasseros`)
+- [ ] Establish CI/CD (GitHub Actions)
+- [ ] Create the skeleton of Yasser Control Center (GTK app)
+
+**Non-Goals (Phase 1–20):** No XFCE theming, no AI workspace, no custom kernel. See [docs/non-goals.md](docs/non-goals.md).
