@@ -10,6 +10,7 @@ def get_notes_dir() -> Path:
     """Return the directory where notes are stored.
 
     Notes live at ~/.local/share/yasseros/notes and are plain Markdown files.
+    The directory is created lazily by create_note() on first use.
     """
     return Path.home() / ".local/share/yasseros/notes"
 
