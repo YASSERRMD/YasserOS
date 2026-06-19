@@ -47,3 +47,5 @@ gir1.2-adw-1
 # =============================================================
 # Developer tools
 build-essential
+# git is usually already present in Raspberry Pi OS base
+git
