@@ -8,6 +8,7 @@ YELLOW='\033[0;33m'
 NC='\033[0m'
 
 CONFIG=/etc/yasseros/security.conf
+# shellcheck source=/dev/null
 [ -f "$CONFIG" ] && . "$CONFIG"
 
 echo -e "${BLUE}YasserOS Security Baseline${NC}"

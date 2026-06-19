@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: ["main", "phase-*"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test:
+    name: Python tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install test dependencies
+        run: pip install pytest
+
+      - name: Run tests
+        run: python3 -m pytest yasser-control-center/tests/ -v --tb=short
+
+  lint-shell:
+    name: Shell script lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ShellCheck
+        run: sudo apt-get install -y shellcheck
+
+      - name: Lint stage-yasseros shell scripts
+        run: |
+          shellcheck -e SC1091 \
+            stage-yasseros/01-run.sh \
+            stage-yasseros/01-run-chroot.sh \
+            stage-yasseros/files/usr/local/bin/yos-update \
+            stage-yasseros/files/usr/local/bin/yos-security-baseline \
+            stage-yasseros/files/usr/local/bin/yasseros-firstboot
+
+  validate-desktop:
+    name: Validate desktop entries
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install desktop-file-utils
+        run: sudo apt-get install -y desktop-file-utils
+
+      - name: Validate .desktop files
+        run: |
+          find stage-yasseros/files/usr/share/applications -name "*.desktop" \
+            -exec desktop-file-validate {} \;
