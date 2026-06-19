@@ -1,0 +1,7 @@
+# YasserOS packages installed without recommends
+# Icon theme
+papirus-icon-theme
+# GTK theme
+greybird
+# Accessibility
+at-spi2-core

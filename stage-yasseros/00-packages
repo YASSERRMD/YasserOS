@@ -1,0 +1,27 @@
+# YasserOS core packages (installed with --install-recommends)
+# Desktop environment
+xfce4
+xfce4-terminal
+thunar
+lightdm
+lightdm-gtk-greeter
+lightdm-gtk-greeter-settings
+# XFCE plugins
+xfce4-notifyd
+xfce4-power-manager
+xfce4-screensaver
+xfce4-settings
+xfce4-taskmanager
+# System integration
+network-manager
+network-manager-gnome
+pulseaudio
+pavucontrol
+# Fonts
+fonts-cantarell
+fonts-noto-core
+fonts-jetbrains-mono
+# Utilities
+file-roller
+mousepad
+ristretto
