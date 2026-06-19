@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+"""Yasser Control Center launch script."""
+
+import sys
+import os
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
+
+from yasser_control_center.main import main
+
+if __name__ == "__main__":
+    sys.exit(main())
