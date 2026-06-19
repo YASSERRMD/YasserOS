@@ -1,0 +1,19 @@
+{
+  "_comment": "YasserOS image size and package count budgets",
+  "image": {
+    "max_size_mb": 3500,
+    "warning_size_mb": 3000
+  },
+  "packages": {
+    "max_count": 600,
+    "warning_count": 500
+  },
+  "boot_time": {
+    "max_seconds": 30,
+    "target_seconds": 20
+  },
+  "ram": {
+    "idle_max_mb": 512,
+    "idle_target_mb": 350
+  }
+}
