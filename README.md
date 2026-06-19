@@ -131,3 +131,11 @@ YasserOS is licensed under the **BSD 3-Clause License** — the same license as 
 See [LICENSE](LICENSE) for the full license text.
 
 Custom assets (wallpapers, logos) in `assets/` are original work by YASSERRMD — All Rights Reserved for personal use.
+
+## Screenshots
+
+*Screenshots will be added here after Phase 20 (first alpha image).*
+
+| Boot Splash | Desktop | Yasser Control Center |
+|------------|---------|----------------------|
+| *(coming soon)* | *(coming soon)* | *(coming soon)* |
