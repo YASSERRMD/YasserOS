@@ -1,0 +1,33 @@
+# YasserOS pi-gen build configuration
+# This file is copied to pi-gen/config before running the build.
+# See pi-gen/README.md for full variable documentation.
+
+# Image identity
+IMG_NAME="YasserOS"
+RELEASE="bookworm"
+
+# Deployment
+DEPLOY_ZIP=0
+USE_QEMU=0
+
+# Locale and keyboard
+LOCALE_DEFAULT="en_GB.UTF-8"
+KEYBOARD_KEYMAP="gb"
+KEYBOARD_LAYOUT="English (UK)"
+TIMEZONE_DEFAULT="Europe/London"
+
+# Default user
+FIRST_USER_NAME="yasser"
+FIRST_USER_PASS=""
+
+# SSH (disabled by default for security)
+ENABLE_SSH=0
+
+# Custom stage list
+# Includes standard pi-gen stages 0-2 (produces headless lite base)
+# plus our custom stage-yasseros (adds XFCE, branding, Control Center)
+STAGE_LIST="stage0 stage1 stage2 stage-yasseros"
+
+# Target architecture (arm64 for Pi 4 / Pi 5)
+# armhf for 32-bit Pi 3 compatibility (not required for YasserOS)
+TARGET_HOSTNAME="yasseros"
