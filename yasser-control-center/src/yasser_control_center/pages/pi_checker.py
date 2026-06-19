@@ -184,3 +184,4 @@ def get_cpu_count() -> int:
 # Section: control-center: add ARM64 readiness status
 # Section: control-center: add package compatibility checklist
 # Section: control-center: add hardware checklist
+# Section: control-center: add Pi build documentation shortcut
