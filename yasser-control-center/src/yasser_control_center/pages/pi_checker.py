@@ -180,3 +180,4 @@ def get_cpu_count() -> int:
         return os.cpu_count() or 0
     except Exception:
         return 0
+# Section: control-center: add CPU architecture display
