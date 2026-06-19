@@ -1,0 +1,27 @@
+button-title=YasserOS
+button-icon=yasseros-logo
+show-button-title=true
+show-button-icon=true
+button-single-row=false
+
+menu-width=450
+menu-height=500
+menu-opacity=95
+
+favorites=xterm;mousepad;thunar;yasser-control-center;
+recent-items-max=10
+
+show-recent-by-default=false
+item-icon-size=2
+sidebar-buttons-icon-size=3
+
+category-hover-activate=false
+stay-on-focus-out=false
+confirm-session-command=true
+profile-shape=1
+
+search-actions=1
+sa1-name=Search Web
+sa1-pattern=!
+sa1-command=xdg-open "https://duckduckgo.com/?q={}"
+sa1-regex=false
