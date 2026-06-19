@@ -121,7 +121,7 @@ try:
             self._list_box.set_margin_end(24)
             scroll.set_child(self._list_box)
 
-            # Empty state label if no projects found
+            # Empty state label if no projects found — shown when discover_projects returns []
             self._empty_label = Gtk.Label(
                 label="No projects found.\nCreate folders inside ~/Projects to get started."
             )
