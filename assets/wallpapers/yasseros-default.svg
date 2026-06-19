@@ -1,0 +1,39 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1117;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#1C2333;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#21262D;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="accent-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4493F8;stop-opacity:0.0"/>
+      <stop offset="50%" style="stop-color:#4493F8;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#A371F7;stop-opacity:0.0"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <!-- Subtle horizontal accent band -->
+  <rect x="0" y="480" width="1920" height="120" fill="url(#accent-glow)"/>
+  <!-- Geometric grid lines (very subtle) -->
+  <g opacity="0.04" stroke="#4493F8" stroke-width="1" fill="none">
+    <line x1="480" y1="0" x2="480" y2="1080"/>
+    <line x1="960" y1="0" x2="960" y2="1080"/>
+    <line x1="1440" y1="0" x2="1440" y2="1080"/>
+    <line x1="0" y1="270" x2="1920" y2="270"/>
+    <line x1="0" y1="540" x2="1920" y2="540"/>
+    <line x1="0" y1="810" x2="1920" y2="810"/>
+  </g>
+  <!-- Accent dot cluster (bottom-right) -->
+  <g opacity="0.12" fill="#4493F8">
+    <circle cx="1700" cy="900" r="2"/>
+    <circle cx="1720" cy="900" r="2"/>
+    <circle cx="1740" cy="900" r="2"/>
+    <circle cx="1700" cy="920" r="2"/>
+    <circle cx="1720" cy="920" r="2"/>
+    <circle cx="1740" cy="920" r="2"/>
+    <circle cx="1700" cy="940" r="2"/>
+    <circle cx="1720" cy="940" r="2"/>
+    <circle cx="1740" cy="940" r="2"/>
+  </g>
+</svg>
