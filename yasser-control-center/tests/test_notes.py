@@ -63,3 +63,23 @@ def test_delete_note(tmp_path):
     result = delete_note(note_path)
     assert result is True
     assert not note_path.exists()
+
+
+def test_list_notes_empty(tmp_path):
+    """An empty directory should return an empty list."""
+    from yasser_control_center.pages.notes import list_notes
+    import yasser_control_center.pages.notes as notes_module
+
+    original = notes_module.get_notes_dir
+    notes_module.get_notes_dir = lambda: tmp_path  # type: ignore[assignment]
+    try:
+        result = list_notes()
+        assert result == []
+    finally:
+        notes_module.get_notes_dir = original
+
+
+def test_markdown_template():
+    """Markdown template must start with a '#' heading."""
+    template = get_markdown_template()
+    assert "#" in template
