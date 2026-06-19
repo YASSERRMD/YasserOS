@@ -89,3 +89,17 @@ xz -dc deploy/YasserOS-*.img.xz | sudo dd of=/dev/sdX bs=4M status=progress
 ```
 
 > **Note:** The build scripts are added in Phase 5. If scripts are missing, see [pi-gen's own README](pi-gen/README.md) for manual build instructions.
+
+## Roadmap
+
+| Phase Range | Focus                                  | Status         |
+|------------|----------------------------------------|----------------|
+| 1–7         | Foundation: pi-gen understanding, first vanilla build | In Progress |
+| 8–13        | Identity: YasserOS branding, boot, wallpapers | Planned |
+| 14–16       | Desktop: XFCE + VirtualBox support    | Planned        |
+| 17–20       | Control Center skeleton + alpha image  | Planned        |
+| 21–30       | Desktop polish (future)               | Future         |
+| 31–40       | Control Center expansion (future)     | Future         |
+| 41–50       | AI Workspace (future, Pi 5)           | Future         |
+
+See [docs/raspberry-pi-roadmap.md](docs/raspberry-pi-roadmap.md) for the full roadmap.
