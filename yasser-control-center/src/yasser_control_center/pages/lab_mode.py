@@ -119,16 +119,27 @@ class LabModePage(Gtk.Box):
         row.connect("activated", lambda r: callback())
         group.add(row)
 
+    @staticmethod
+    def _detect_terminal() -> str:
+        for candidate in ["xfce4-terminal", "xterm", "gnome-terminal", "konsole", "lxterminal"]:
+            try:
+                subprocess.run(["which", candidate], capture_output=True, check=True)
+                return candidate
+            except subprocess.CalledProcessError:
+                continue
+        return ""
+
     def _open_terminal(self):
-        terminal = self._config.get("terminal", "xfce4-terminal")
+        terminal = self._config.get("terminal") or self._detect_terminal()
         projects_dir = self._config.get("projects_dir", str(_PROJECTS_DIR))
+        if not terminal:
+            self._status_widget.set_error("No terminal found")
+            return
         try:
             subprocess.Popen([terminal, f"--working-directory={projects_dir}"])
+            self._status_widget.set_ok("Terminal opened")
         except FileNotFoundError:
-            try:
-                subprocess.Popen(["xterm"])
-            except FileNotFoundError:
-                self._status_widget.set_status("No terminal found", "dialog-error-symbolic")
+            self._status_widget.set_error("Terminal launch failed")
 
     def _open_projects_folder(self):
         projects_dir = self._config.get("projects_dir", str(_PROJECTS_DIR))
