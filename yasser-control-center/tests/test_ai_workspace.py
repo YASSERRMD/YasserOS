@@ -29,3 +29,8 @@ def test_get_models_dir_default(monkeypatch):
     monkeypatch.delenv("YASSEROS_MODELS_DIR", raising=False)
     result = get_models_dir()
     assert "Models" in str(result)
+
+
+def test_check_nonexistent_tool():
+    """A tool name that definitely does not exist should return False."""
+    assert check_tool_installed("this_tool_does_not_exist_xyz") is False
