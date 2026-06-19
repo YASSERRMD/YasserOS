@@ -33,3 +33,24 @@ The first 20 phases establish the foundation: understanding pi-gen, building an 
 - [ ] Create the skeleton of Yasser Control Center (GTK app)
 
 **Non-Goals (Phase 1–20):** No XFCE theming, no AI workspace, no custom kernel. See [docs/non-goals.md](docs/non-goals.md).
+
+## Architecture
+
+```
+YasserOS Repository
+├── pi-gen/               ← Upstream builder (git submodule, RPi-Distro/pi-gen)
+├── stage-yasseros/       ← Custom build stage (XFCE, branding, Control Center)
+├── yasser-control-center/ ← GTK4 system app (Python)
+├── desktop-layer/        ← Shared desktop config (pi-gen + VirtualBox tracks)
+├── debian-live-amd64/    ← amd64 ISO for VirtualBox development testing
+├── assets/               ← Source design files (SVG wallpapers, logos)
+├── ci/                   ← GitHub Actions workflows
+└── docs/                 ← Documentation and ADRs
+```
+
+**Build System:** [pi-gen](https://github.com/RPi-Distro/pi-gen) (ARM images) + debian-live-build (amd64 testing)  
+**Target Hardware:** Raspberry Pi 4 (BCM2711, ARMv8 64-bit)  
+**Base OS:** Debian bookworm (via Raspberry Pi OS)  
+**Desktop:** XFCE 4.x + LightDM  
+
+See [ADR-001](docs/adr/ADR-001-build-system-choice.md) for the build system decision rationale.
