@@ -181,3 +181,4 @@ def get_cpu_count() -> int:
     except Exception:
         return 0
 # Section: control-center: add CPU architecture display
+# Section: control-center: add ARM64 readiness status
