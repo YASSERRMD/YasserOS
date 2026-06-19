@@ -160,7 +160,10 @@ try:
             models_group.add(models_row)
 
         def _launch_python(self):
-            """Python launcher — open python3 in xfce4-terminal."""
+            """Python launcher — open python3 in xfce4-terminal.
+
+            Falls back silently if the terminal is not found.
+            """
             try:
                 subprocess.Popen(["xfce4-terminal", "-e", "python3"])
             except FileNotFoundError:
