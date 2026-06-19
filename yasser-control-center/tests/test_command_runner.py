@@ -53,3 +53,11 @@ def test_blocked_returns_message():
     success, msg = run_safe_command("malicious --flag")
     assert success is False
     assert "safe" in msg.lower() or "not in safe list" in msg.lower()
+
+
+def test_command_output_rendering():
+    """run_safe_command always returns a (bool, str) tuple."""
+    result = run_safe_command("df")
+    assert isinstance(result, tuple)
+    assert isinstance(result[0], bool)
+    assert isinstance(result[1], str)
