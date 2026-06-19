@@ -7,6 +7,7 @@ gi.require_version("Adw", "1")
 
 from gi.repository import Adw, Gtk
 from .pages.about import AboutPage
+from .pages.system_info import SystemInfoPage
 
 
 class ControlCenterWindow(Adw.ApplicationWindow):
@@ -66,11 +67,8 @@ class ControlCenterWindow(Adw.ApplicationWindow):
         self._content_stack.add_named(about_page, "about")
         self._pages["about"] = "about"
 
-        placeholder = Adw.StatusPage()
-        placeholder.set_icon_name("computer-symbolic")
-        placeholder.set_title("System Info")
-        placeholder.set_description("Coming in Phase 19.")
-        self._content_stack.add_named(placeholder, "system")
+        system_page = SystemInfoPage()
+        self._content_stack.add_named(system_page, "system")
         self._pages["system"] = "system"
 
         self._content_page.set_child(self._content_stack)
