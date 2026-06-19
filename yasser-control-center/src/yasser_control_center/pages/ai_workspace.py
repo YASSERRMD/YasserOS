@@ -44,7 +44,8 @@ try:
             scroll.set_vexpand(True)
             self.append(scroll)
 
-            # AI tools category layout — one PreferencesGroup per tool category
+            # AI tools category layout — one PreferencesGroup per tool category.
+            # Categories: Python/REPL, Jupyter, Ollama, Open WebUI, Local Models.
             content = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=16)
             content.set_margin_top(24)
             content.set_margin_bottom(24)
