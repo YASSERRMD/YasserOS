@@ -44,7 +44,10 @@ def create_note(name: str, content: str = "") -> Path:
 
 
 def read_note(path: Path) -> str:
-    """Read and return the content of a note file."""
+    """Read and return the content of a note file.
+
+    The note is decoded as UTF-8. Raises FileNotFoundError if the file is missing.
+    """
     return path.read_text(encoding="utf-8")
 
 
