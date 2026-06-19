@@ -123,3 +123,11 @@ This project is a downstream customisation of **Raspberry Pi OS**, built using *
 - Raspberry Pi OS copyright: Raspberry Pi (Trading) Ltd.
 
 YasserOS complies with the pi-gen BSD 3-Clause license terms. The Raspberry Pi name and logo are trademarks of Raspberry Pi Ltd. YasserOS is not endorsed by or affiliated with Raspberry Pi Ltd.
+
+## License
+
+YasserOS is licensed under the **BSD 3-Clause License** — the same license as pi-gen.
+
+See [LICENSE](LICENSE) for the full license text.
+
+Custom assets (wallpapers, logos) in `assets/` are original work by YASSERRMD — All Rights Reserved for personal use.
