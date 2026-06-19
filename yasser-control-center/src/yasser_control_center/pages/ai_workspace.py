@@ -82,7 +82,7 @@ try:
             python_row.connect("activated", lambda r: self._launch_python())
             python_group.add(python_row)
 
-            # Jupyter preferences group
+            # Jupyter preferences group — status row reflects installation state
             jupyter_group = Adw.PreferencesGroup()
             jupyter_group.set_title("Jupyter")
             content.append(jupyter_group)
