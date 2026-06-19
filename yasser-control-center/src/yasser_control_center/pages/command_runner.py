@@ -155,7 +155,7 @@ try:
             terminal_row.connect("activated", lambda r: self._open_terminal())
             terminal_group.add(terminal_row)
 
-            # Command output display
+            # Command output display — non-editable monospace text view
             output_group = Adw.PreferencesGroup()
             output_group.set_title("Output")
             content.append(output_group)
