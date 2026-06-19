@@ -103,3 +103,13 @@ xz -dc deploy/YasserOS-*.img.xz | sudo dd of=/dev/sdX bs=4M status=progress
 | 41–50       | AI Workspace (future, Pi 5)           | Future         |
 
 See [docs/raspberry-pi-roadmap.md](docs/raspberry-pi-roadmap.md) for the full roadmap.
+
+## Credits
+
+**Created by:** YASSERRMD (Mohamed Yasser)
+
+**Tools and inspirations:**
+- [pi-gen](https://github.com/RPi-Distro/pi-gen) by the Raspberry Pi Foundation — the build system this project is entirely based on
+- [Raspberry Pi OS](https://www.raspberrypi.com/software/) — the upstream OS
+- [Debian](https://www.debian.org/) — the foundation everything is built on
+- [XFCE](https://www.xfce.org/) — the chosen desktop environment
