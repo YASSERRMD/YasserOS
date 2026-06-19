@@ -1,0 +1,41 @@
+#!/bin/bash
+# YasserOS: Apply security baseline settings
+set -e
+
+BLUE='\033[38;2;68;147;248m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m'
+
+CONFIG=/etc/yasseros/security.conf
+[ -f "$CONFIG" ] && . "$CONFIG"
+
+echo -e "${BLUE}YasserOS Security Baseline${NC}"
+echo "---------------------------"
+
+# UFW firewall
+if [ "${ENABLE_UFW:-true}" = "true" ] && command -v ufw >/dev/null 2>&1; then
+    echo -e "${BLUE}Configuring UFW firewall...${NC}"
+    sudo ufw default deny incoming
+    sudo ufw default allow outgoing
+    sudo ufw --force enable
+    echo -e "${GREEN}UFW enabled.${NC}"
+else
+    echo -e "${YELLOW}UFW not available — install with: sudo apt-get install ufw${NC}"
+fi
+
+# SSH hardening
+if command -v sshd >/dev/null 2>&1; then
+    SSH_CONFIG=/etc/ssh/sshd_config
+    echo -e "${BLUE}Hardening SSH...${NC}"
+    sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin no/' "$SSH_CONFIG"
+    sudo systemctl reload ssh 2>/dev/null || true
+    echo -e "${GREEN}SSH root login disabled.${NC}"
+fi
+
+# Permissions check on sensitive dirs
+echo -e "${BLUE}Checking permissions...${NC}"
+sudo chmod 700 /root 2>/dev/null || true
+sudo chmod 755 /etc/yasseros
+
+echo -e "${GREEN}Security baseline applied.${NC}"
