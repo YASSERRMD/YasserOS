@@ -157,13 +157,12 @@ class LabModePage(Gtk.Box):
     def _open_documentation(self):
         docs_dir = self._config.get("docs_dir", str(_DOCS_DIR))
         index = Path(docs_dir) / "index.html"
-        if index.exists():
+        target = str(index) if index.exists() else "https://github.com/YASSERRMD/YasserOS"
+        for cmd in [["xdg-open", target], ["firefox-esr", target], ["firefox", target]]:
             try:
-                subprocess.Popen(["xdg-open", str(index)])
+                subprocess.Popen(cmd)
+                self._status_widget.set_ok("Documentation opened")
+                return
             except FileNotFoundError:
-                pass
-        else:
-            try:
-                subprocess.Popen(["xdg-open", "https://github.com/YASSERRMD/YasserOS"])
-            except FileNotFoundError:
-                pass
+                continue
+        self._status_widget.set_error("No browser found")
