@@ -1,0 +1,40 @@
+#!/bin/bash
+# YasserOS optional: install VS Code (code-oss / code) on Raspberry Pi
+set -e
+
+BLUE='\033[38;2;68;147;248m'
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m'
+
+echo -e "${BLUE}YasserOS: VS Code Installation${NC}"
+echo "-------------------------------"
+
+ARCH=$(uname -m)
+
+# Try code-oss from Raspbian repos first (arm64-native, no key needed)
+if apt-cache show code-oss >/dev/null 2>&1; then
+    echo "Installing code-oss from repository..."
+    sudo apt-get install -y code-oss
+    echo -e "${GREEN}VS Code (code-oss) installed.${NC}"
+    exit 0
+fi
+
+# Fallback: Microsoft VS Code via apt (arm64)
+if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" || "$ARCH" == "x86_64" ]]; then
+    echo "Adding Microsoft VS Code repository..."
+    sudo apt-get install -y wget gpg
+    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | \
+        gpg --dearmor | \
+        sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+
+    echo "deb [arch=arm64] https://packages.microsoft.com/repos/code stable main" | \
+        sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+
+    sudo apt-get update -qq
+    sudo apt-get install -y code
+    echo -e "${GREEN}VS Code installed.${NC}"
+else
+    echo -e "${RED}Unsupported architecture: $ARCH${NC}"
+    exit 1
+fi
