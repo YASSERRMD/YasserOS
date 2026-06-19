@@ -12,6 +12,7 @@ from .pages.lab_mode import LabModePage
 from .pages.ai_workspace import AIWorkspacePage
 from .pages.project_launcher import ProjectLauncherPage
 from .pages.notes import NotesPage
+from .pages.pi_checker import PiCheckerPage
 
 
 class ControlCenterWindow(Adw.ApplicationWindow):
@@ -57,6 +58,7 @@ class ControlCenterWindow(Adw.ApplicationWindow):
             ("ai_workspace", "AI Workspace", "starred-symbolic"),
             ("projects", "Projects", "folder-symbolic"),
             ("notes", "Notes", "document-edit-symbolic"),
+            ("pi_checker", "Pi Checker", "emblem-system-symbolic"),
         ]:
             row = self._make_nav_row(label, icon)
             sidebar_list.append(row)
@@ -94,6 +96,10 @@ class ControlCenterWindow(Adw.ApplicationWindow):
         notes_page = NotesPage()
         self._content_stack.add_named(notes_page, "notes")
         self._pages["notes"] = "notes"
+
+        pi_page = PiCheckerPage()
+        self._content_stack.add_named(pi_page, "pi_checker")
+        self._pages["pi_checker"] = "pi_checker"
 
         self._content_page.set_child(self._content_stack)
         self._split_view.set_content(self._content_page)
