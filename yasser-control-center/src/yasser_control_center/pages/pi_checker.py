@@ -173,3 +173,10 @@ try:
 
 except ImportError:
     pass
+
+
+def get_cpu_count() -> int:
+    try:
+        return os.cpu_count() or 0
+    except Exception:
+        return 0
