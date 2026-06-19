@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Yasser Control Center
+GenericName=System Settings
+Comment=Manage YasserOS system settings and tools
+Icon=preferences-system
+Exec=ycc
+Terminal=false
+StartupNotify=true
+Categories=Settings;System;YasserOS;
+Keywords=yasseros;control;settings;system;
