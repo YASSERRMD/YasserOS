@@ -1,0 +1,14 @@
+[Unit]
+Description=YasserOS First Boot Setup
+After=network.target
+ConditionPathExists=!/var/log/yasseros-firstboot.log
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/yasseros-firstboot
+RemainAfterExit=yes
+StandardOutput=journal+console
+StandardError=journal+console
+
+[Install]
+WantedBy=multi-user.target
