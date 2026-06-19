@@ -8,6 +8,7 @@ gi.require_version("Adw", "1")
 from gi.repository import Adw, Gtk
 from .pages.about import AboutPage
 from .pages.system_info import SystemInfoPage
+from .pages.lab_mode import LabModePage
 
 
 class ControlCenterWindow(Adw.ApplicationWindow):
@@ -49,6 +50,7 @@ class ControlCenterWindow(Adw.ApplicationWindow):
         for page_id, label, icon in [
             ("about", "About YasserOS", "help-about-symbolic"),
             ("system", "System Info", "computer-symbolic"),
+            ("lab", "Lab Mode", "applications-science-symbolic"),
         ]:
             row = self._make_nav_row(label, icon)
             sidebar_list.append(row)
@@ -70,6 +72,10 @@ class ControlCenterWindow(Adw.ApplicationWindow):
         system_page = SystemInfoPage()
         self._content_stack.add_named(system_page, "system")
         self._pages["system"] = "system"
+
+        lab_page = LabModePage()
+        self._content_stack.add_named(lab_page, "lab")
+        self._pages["lab"] = "lab"
 
         self._content_page.set_child(self._content_stack)
         self._split_view.set_content(self._content_page)
