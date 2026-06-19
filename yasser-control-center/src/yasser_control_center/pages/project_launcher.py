@@ -54,6 +54,7 @@ def open_in_file_manager(path: Path) -> bool:
     """Open *path* in the default file manager.
 
     Tries xdg-open first, then thunar. Returns True on success.
+    The folder is opened at the given path, not the projects root.
     """
     for cmd in [["xdg-open", str(path)], ["thunar", str(path)]]:
         try:
