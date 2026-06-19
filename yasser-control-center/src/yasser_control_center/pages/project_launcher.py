@@ -191,7 +191,11 @@ try:
             return row
 
         def _refresh(self) -> None:
-            """Refresh the project list by re-scanning the projects directory."""
+            """Refresh the project list by re-scanning the projects directory.
+
+            Called by the refresh button in the toolbar. Clears all rows and
+            re-populates from disk.
+            """
             self._populate()
 
 except ImportError:
