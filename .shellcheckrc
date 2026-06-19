@@ -1,0 +1,8 @@
+# YasserOS shellcheck configuration
+# Applied automatically when running shellcheck in the project root
+
+# Suppress: "can't follow non-constant source" — sourced configs are intentional
+disable=SC1091
+
+# Shell dialect — all scripts target bash
+shell=bash
