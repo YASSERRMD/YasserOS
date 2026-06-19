@@ -51,3 +51,4 @@ build-essential
 git
 # Python development tools
 python3-venv
+python3-pip
