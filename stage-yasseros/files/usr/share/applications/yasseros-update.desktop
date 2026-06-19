@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=YasserOS Update
+Comment=Update YasserOS packages
+Icon=system-software-update
+Exec=xfce4-terminal -e yos-update
+Terminal=false
+StartupNotify=true
+Categories=System;YasserOS;
+Keywords=yasseros;update;upgrade;apt;

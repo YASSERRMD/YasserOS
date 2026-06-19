@@ -1,0 +1,21 @@
+#!/bin/bash
+# YasserOS system update helper
+set -e
+
+GREEN='\033[0;32m'
+BLUE='\033[38;2;68;147;248m'
+NC='\033[0m'
+
+echo -e "${BLUE}YasserOS Update Manager${NC}"
+echo "------------------------"
+
+echo -e "${BLUE}Updating package lists...${NC}"
+sudo apt-get update
+
+echo -e "${BLUE}Upgrading packages...${NC}"
+sudo apt-get upgrade -y
+
+echo -e "${BLUE}Removing unused packages...${NC}"
+sudo apt-get autoremove -y
+
+echo -e "${GREEN}System updated successfully.${NC}"
