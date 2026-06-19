@@ -1,0 +1,79 @@
+// YasserOS Plymouth boot splash
+// Deep Space background + YasserBlue progress bar + Snow status text
+
+// ── Colours ───────────────────────────────────────────────────────────────
+bg_r = 0.051; bg_g = 0.067; bg_b = 0.090;   // #0D1117 Deep Space
+bar_r = 0.267; bar_g = 0.576; bar_b = 0.973; // #4493F8 YasserBlue
+text_r = 0.902; text_g = 0.929; text_b = 0.953; // #E6EDF3 Snow
+
+// ── Background ───────────────────────────────────────────────────────────
+bg_image = Image.New(Window.GetWidth(), Window.GetHeight());
+for (y = 0; y < Window.GetHeight(); y++) {
+    // Subtle vertical gradient: Deep Space at top, slightly lighter at bottom
+    t = y / Window.GetHeight();
+    r = bg_r + t * 0.02;
+    g = bg_g + t * 0.02;
+    b = bg_b + t * 0.03;
+    for (x = 0; x < Window.GetWidth(); x++) {
+        bg_image.SetPixel(x, y, r, g, b, 1.0);
+    }
+}
+bg_sprite = Sprite(bg_image);
+bg_sprite.SetX(0);
+bg_sprite.SetY(0);
+bg_sprite.SetZ(0);
+
+// ── Progress bar ─────────────────────────────────────────────────────────
+bar_height = 3;
+bar_width   = Math.Int(Window.GetWidth() * 0.5);
+bar_x       = Math.Int((Window.GetWidth()  - bar_width) / 2);
+bar_y       = Math.Int(Window.GetHeight()  * 0.82);
+
+bar_bg_img = Image.New(bar_width, bar_height);
+for (y = 0; y < bar_height; y++)
+    for (x = 0; x < bar_width; x++)
+        bar_bg_img.SetPixel(x, y, 0.15, 0.18, 0.22, 1.0);
+bar_bg_sprite = Sprite(bar_bg_img);
+bar_bg_sprite.SetX(bar_x);
+bar_bg_sprite.SetY(bar_y);
+bar_bg_sprite.SetZ(1);
+
+bar_fill_img = Image.New(1, bar_height);
+for (y = 0; y < bar_height; y++)
+    bar_fill_img.SetPixel(0, y, bar_r, bar_g, bar_b, 1.0);
+bar_fill_sprite = Sprite(bar_fill_img);
+bar_fill_sprite.SetX(bar_x);
+bar_fill_sprite.SetY(bar_y);
+bar_fill_sprite.SetZ(2);
+
+// ── Status message ───────────────────────────────────────────────────────
+status_text = "";
+status_sprite = Sprite();
+status_sprite.SetZ(3);
+
+fun display_message_callback(text) {
+    status_text = text;
+    lbl = Image.Text(text, text_r, text_g, text_b, 1.0, "Sans 10");
+    status_sprite.SetImage(lbl);
+    status_sprite.SetX(Math.Int((Window.GetWidth()  - lbl.GetWidth())  / 2));
+    status_sprite.SetY(bar_y + 12);
+}
+
+Plymouth.SetDisplayMessageFunction(display_message_callback);
+
+// ── Progress callback ────────────────────────────────────────────────────
+fun progress_callback(duration, progress) {
+    w = Math.Int(bar_width * progress);
+    if (w < 1) w = 1;
+    fill = bar_fill_img.Scale(w, bar_height);
+    bar_fill_sprite.SetImage(fill);
+}
+
+Plymouth.SetBootProgressFunction(progress_callback);
+
+// ── Password prompt (passphrase for LUKS, if ever needed) ────────────────
+fun display_password_callback(prompt, bullets) {
+    display_message_callback(prompt);
+}
+
+Plymouth.SetDisplayPasswordFunction(display_password_callback);

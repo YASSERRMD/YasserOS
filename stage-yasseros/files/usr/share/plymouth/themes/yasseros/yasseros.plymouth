@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=YasserOS
+Description=YasserOS boot splash — deep space gradient with progress spinner
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/yasseros/assets
+ScriptFile=/usr/share/plymouth/themes/yasseros/yasseros.script
