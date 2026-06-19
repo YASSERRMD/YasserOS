@@ -6,7 +6,8 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
-# Safe command whitelist — only these command prefixes are permitted
+# Safe command whitelist — only these command prefixes are permitted.
+# Commands not in this list will be blocked; users should use the terminal instead.
 SAFE_COMMANDS = [
     "df",
     "free",
