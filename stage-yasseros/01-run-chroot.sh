@@ -63,6 +63,18 @@ if command -v pulseaudio >/dev/null 2>&1; then
     log "PulseAudio present — will autostart for user sessions"
 fi
 
+# --- Plymouth Boot Splash ---
+
+log "Configuring YasserOS Plymouth theme"
+if command -v plymouth-set-default-theme >/dev/null 2>&1; then
+    plymouth-set-default-theme yasseros
+    log "Plymouth theme set to yasseros"
+    # Rebuild initramfs to include the new theme
+    update-initramfs -u -k all 2>/dev/null || log "update-initramfs failed — will retry on first boot"
+else
+    log "plymouth-set-default-theme not found — theme will be applied via plymouthd.conf"
+fi
+
 # --- First Boot Service ---
 
 log "Installing YasserOS first-boot service"
