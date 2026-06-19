@@ -49,3 +49,5 @@ gir1.2-adw-1
 build-essential
 # git is usually already present in Raspberry Pi OS base
 git
+# Python development tools
+python3-venv
