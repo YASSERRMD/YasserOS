@@ -20,10 +20,13 @@ jobs:
           python-version: "3.11"
 
       - name: Install test dependencies
-        run: pip install pytest
+        run: pip install pytest ruff
 
       - name: Run tests
         run: python3 -m pytest yasser-control-center/tests/ -v --tb=short
+
+      - name: Ruff lint
+        run: ruff check yasser-control-center/src/ yasser-control-center/tests/
 
   lint-shell:
     name: Shell script lint
