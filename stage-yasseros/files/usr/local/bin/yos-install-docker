@@ -1,0 +1,49 @@
+#!/bin/bash
+# YasserOS optional: install Docker Engine on Raspberry Pi (arm64)
+set -e
+
+BLUE='\033[38;2;68;147;248m'
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m'
+
+echo -e "${BLUE}YasserOS: Docker Installation${NC}"
+echo "------------------------------"
+
+# Check architecture
+ARCH=$(uname -m)
+if [[ "$ARCH" != "aarch64" && "$ARCH" != "arm64" && "$ARCH" != "x86_64" ]]; then
+    echo -e "${RED}Unsupported architecture: $ARCH${NC}"
+    exit 1
+fi
+
+echo "Installing Docker prerequisites..."
+sudo apt-get update -qq
+sudo apt-get install -y -qq ca-certificates curl gnupg lsb-release
+
+echo "Adding Docker GPG key..."
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | \
+    sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+echo "Adding Docker repository..."
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/debian \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+echo "Installing Docker Engine..."
+sudo apt-get update -qq
+sudo apt-get install -y -qq docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Add current user to docker group
+if ! groups "$USER" | grep -q docker; then
+    sudo usermod -aG docker "$USER"
+    echo -e "${GREEN}Added $USER to docker group. Log out and back in for changes to take effect.${NC}"
+fi
+
+sudo systemctl enable docker
+echo -e "${GREEN}Docker installed successfully.${NC}"
+docker --version
