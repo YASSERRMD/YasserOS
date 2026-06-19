@@ -124,7 +124,7 @@ try:
             )
             ollama_group.add(ollama_row)
 
-            # Open WebUI preferences group
+            # Open WebUI preferences group — browser-based chat UI for local LLMs
             open_webui_group = Adw.PreferencesGroup()
             open_webui_group.set_title("Open WebUI")
             content.append(open_webui_group)
