@@ -11,7 +11,7 @@ def get_projects_root() -> Path:
     """Return the root directory used to discover projects.
 
     Defaults to ~/Projects but can be overridden via the YASSEROS_PROJECTS_DIR
-    environment variable.
+    environment variable, e.g. export YASSEROS_PROJECTS_DIR=/mnt/data/projects
     """
     env_val = os.environ.get("YASSEROS_PROJECTS_DIR", "")
     if env_val:
