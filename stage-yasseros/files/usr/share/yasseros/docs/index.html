@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YasserOS Documentation</title>
+  <style>
+    :root {
+      --bg: #0D1117;
+      --surface: #161B22;
+      --border: #30363D;
+      --blue: #4493F8;
+      --violet: #A371F7;
+      --snow: #E6EDF3;
+      --muted: #8B949E;
+      --green: #3FB950;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--snow); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; align-items: center; gap: 1rem; }
+    header h1 { font-size: 1.4rem; background: linear-gradient(135deg, var(--blue), var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .version { color: var(--muted); font-size: 0.85rem; }
+    main { max-width: 900px; margin: 0 auto; padding: 2rem; }
+    h2 { color: var(--blue); font-size: 1.2rem; margin: 2rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; transition: border-color 0.2s; }
+    .card:hover { border-color: var(--blue); }
+    .card h3 { color: var(--snow); font-size: 1rem; margin-bottom: 0.4rem; }
+    .card p { color: var(--muted); font-size: 0.875rem; }
+    .card a { display: block; margin-top: 0.75rem; font-size: 0.875rem; }
+    .badge { display: inline-block; background: var(--blue); color: var(--bg); border-radius: 4px; padding: 0.1rem 0.5rem; font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; }
+    footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 3rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>YasserOS Documentation</h1>
+      <span class="version">v0.1.0-alpha</span>
+    </div>
+  </header>
+
+  <main>
+    <h2>Getting Started</h2>
+    <div class="card-grid">
+      <div class="card">
+        <span class="badge">Guide</span>
+        <h3>Quick Start</h3>
+        <p>Boot your Raspberry Pi with YasserOS and get up and running in minutes.</p>
+        <a href="quickstart.html">Read guide &rarr;</a>
+      </div>
+      <div class="card">
+        <span class="badge">Reference</span>
+        <h3>Raspberry Pi Setup</h3>
+        <p>Hardware requirements, flashing instructions, and first-boot configuration.</p>
+        <a href="raspberry-pi.html">Read guide &rarr;</a>
+      </div>
+      <div class="card">
+        <span class="badge">Guide</span>
+        <h3>Lab Mode</h3>
+        <p>Enable developer Lab Mode to access project tools and development environment.</p>
+        <a href="lab-mode.html">Read guide &rarr;</a>
+      </div>
+    </div>
+
+    <h2>Applications</h2>
+    <div class="card-grid">
+      <div class="card">
+        <span class="badge">App</span>
+        <h3>Yasser Control Center</h3>
+        <p>System management app for YasserOS. Manage settings, view system info, check Pi compatibility.</p>
+        <a href="control-center.html">Read guide &rarr;</a>
+      </div>
+      <div class="card">
+        <span class="badge">App</span>
+        <h3>AI Workspace</h3>
+        <p>Local AI tools and model management for offline-first AI development.</p>
+        <a href="ai-workspace.html">Read guide &rarr;</a>
+      </div>
+    </div>
+
+    <h2>Development</h2>
+    <div class="card-grid">
+      <div class="card">
+        <span class="badge">Dev</span>
+        <h3>Building YasserOS</h3>
+        <p>How to build YasserOS from source using pi-gen on a Linux host.</p>
+        <a href="building.html">Read guide &rarr;</a>
+      </div>
+      <div class="card">
+        <span class="badge">Dev</span>
+        <h3>Contributing</h3>
+        <p>Contribution guidelines, phase workflow, and coding standards.</p>
+        <a href="contributing.html">Read guide &rarr;</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    YasserOS &mdash; Personal Raspberry Pi OS &mdash;
+    <a href="https://github.com/YASSERRMD/YasserOS">GitHub</a>
+  </footer>
+</body>
+</html>
