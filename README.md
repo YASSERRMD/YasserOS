@@ -1,5 +1,7 @@
 # YasserOS
 
+![YasserOS Banner](docs/assets/yasseros-banner.png)
+
 A personal hobby operating system built on Raspberry Pi OS (Debian bookworm).
 
 > **Hobby Project Disclaimer:** YasserOS is a personal brand experiment and learning project. It is not a production operating system, not a commercial product, and not intended for use by anyone other than its creator. It is not affiliated with the Raspberry Pi Foundation or Debian. Use at your own risk.
@@ -36,17 +38,7 @@ The first 20 phases establish the foundation: understanding pi-gen, building an 
 
 ## Architecture
 
-```
-YasserOS Repository
-├── pi-gen/               ← Upstream builder (git submodule, RPi-Distro/pi-gen)
-├── stage-yasseros/       ← Custom build stage (XFCE, branding, Control Center)
-├── yasser-control-center/ ← GTK4 system app (Python)
-├── desktop-layer/        ← Shared desktop config (pi-gen + VirtualBox tracks)
-├── debian-live-amd64/    ← amd64 ISO for VirtualBox development testing
-├── assets/               ← Source design files (SVG wallpapers, logos)
-├── ci/                   ← GitHub Actions workflows
-└── docs/                 ← Documentation and ADRs
-```
+![YasserOS Architecture](docs/assets/yasseros-architecture.png)
 
 **Build System:** [pi-gen](https://github.com/RPi-Distro/pi-gen) (ARM images) + debian-live-build (amd64 testing)  
 **Target Hardware:** Raspberry Pi 4 (BCM2711, ARMv8 64-bit)  
@@ -133,11 +125,9 @@ Custom assets (wallpapers, logos) in `assets/` are original work by YASSERRMD �
 
 ## Screenshots
 
-*Screenshots will be added here after Phase 20 (first alpha image).*
-
 | Boot Splash | Desktop | Yasser Control Center |
 |------------|---------|----------------------|
-| *(coming soon)* | *(coming soon)* | *(coming soon)* |
+| *(post-flash)* | *(post-flash)* | *(post-flash)* |
 
 ## FAQ
 
